@@ -2,7 +2,7 @@
 
 **Build your Friend. Build your district. Build the city.**
 
-**Builder:** [420JB](https://github.com/420JB)  
+**Builder / contact:** [420JB](https://github.com/420JB) · Twitter: [@CallOfTheStars](https://twitter.com/CallOfTheStars)  
 **Category:** **Token Activity** (primary) · **Economy Potential** (secondary)  
 **Playable demo:** https://generations-city-production.up.railway.app/  
 **Source:** https://github.com/420JB/generations-city/tree/ecb3d6ba8ce3576affbd656fa2a22b52fb4b91de
