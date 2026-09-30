@@ -19,7 +19,9 @@ Rare City is a social strategy city built around nine Rare Friends family distri
 
 **Everything in this Vibeathon build is simulated, deliberately.** All RF is labelled **SIMULATED RF**. No real tokens move, no wallet is connected, and nothing is written on-chain. The Vibeathon MVP rules ask entries to keep purchases and rewards simulated and clearly labelled, and live contracts and real-money transactions are not required to submit. Rare City uses that MVP model to demonstrate the full downstream effect of RF activity safely, end to end.
 
-## 30-second judge path
+## Judge walkthrough
+
+### Core RF loop (~30 seconds)
 
 1. Open **Build Board**.
 2. Find **Demo Friend #812**, which starts **38 RF from Tier 4** and can capture **The Grand Fountain** from Sparkling.
@@ -29,9 +31,13 @@ Rare City is a social strategy city built around nine Rare Friends family distri
 6. You earn **Closer** and **Kingmaker**, and **District Radio** records the event.
 7. Reopen Build Board / Radio: **Demo Friend #288** is now **63 RF from Tier 3**, which can make Family the **Capital**.
 
-The in-app **Demo Guide** walks through this path and updates from real game state. **Reset Demo** restores the starting scenario.
+The in-app **Demo Guide** walks through the core RF loop and updates from real game state. Its optional **WATCH THE CITY GROW** block opens the city-growth flow. **Reset Demo** restores the starting scenario.
 
-**Then try the city-growth demo:** in the Demo Guide, choose **Watch the city grow · Choose a plot** (or open **Districts & Monuments → Simulate Real City Growth**) and press **+ Add Friend · choose plot**. The Friend's family fixes the district, available plots highlight on the live city map, and you choose the exact property location. If the current Wards are full, the next Ward is previewed and opens only when you confirm the placement.
+### Then grow the city
+
+1. In the Demo Guide, choose **Watch the city grow · Choose a plot** — or open **Districts & Monuments → Simulate Real City Growth**.
+2. Press **+ Add Friend · choose plot**. The Friend's family fixes the district and available plots highlight on the city map.
+3. Choose the exact property location and press **Place Friend here**. If the current Wards are full, the next Ward is previewed and opens only when you confirm the placement.
 
 ## What to try after the core loop
 
@@ -40,8 +46,7 @@ The in-app **Demo Guide** walks through this path and updates from real game sta
 - **Property media:** install a billboard, upload an image, add a short owner message, then click the billboard in-world to open its media viewer. Links are intentionally blocked.
 - **District competition:** capture tier-based civic monuments, fight for the prestige-only Capital, or chase the **City Crown** for tallest building.
 - **Patronage:** contribute to another Friend's building and earn increasingly visible recognition on that property.
-- **Choose a plot and watch the city grow:** the Demo Guide and **Districts & Monuments → Simulate Real City Growth** both open the exact-plot placement flow described above.
-- **Fast-forward district growth:** **District Radio → Demo Tools → Simulate Family growth** activates deterministic simulated residents through the real plot allocator (first free plot) until the next Family Ward opens. The first click opens **Ward II**; the next fills Ward II and opens **Ward III**.
+- **Fast-forward district growth:** **District Radio → Demo Tools → Simulate Family growth** activates deterministic simulated residents through the real plot allocator (first free plot) until the next Family Ward opens. The control always shows the next Family Ward it will open and stops as soon as that Ward opens.
 
 ## RF rules and costs
 
@@ -68,7 +73,7 @@ The world hierarchy is:
 
 `City → District → Ward → Plot → Building`
 
-Each of the nine family districts expands independently. Wards are generated procedurally and deterministically as plots fill. The demo starts with roughly 180 buildings and uses level-of-detail rendering plus viewport culling so the city remains navigable as it grows.
+Each of the nine family districts expands independently. Wards are generated procedurally and deterministically as plots fill. The demo starts with **180 seeded buildings** and uses level-of-detail rendering plus viewport culling so the city remains navigable as it grows.
 
 The live demo exposes this directly in **Districts & Monuments → Simulate Real City Growth**: judges can add one simulated Friend to any family district, choose its exact plot, and watch the new property appear. This runs through the real district/ward/plot allocation logic rather than toggling a prebuilt visual state.
 
@@ -150,7 +155,7 @@ Automated coverage includes the 38 RF monument-capture path, Capital progression
 - Exact plot selection is implemented against deterministic local state, not a server: there is no multi-user concurrency or server-side atomic plot reservation yet.
 - The hackathon monument/Capital model uses simplified cumulative tier counts. A production seasonal system should normalize competition against active seasonal participation rather than raw family supply.
 - Uploaded billboard media is stored locally in the browser. Production media needs server storage, moderation, reporting and content controls.
-- No live token settlement, wallet ownership verification, marketplace, ad rental system or chain indexer is included.
+- No live token settlement, wallet ownership verification or chain indexer is included.
 
 ## Credits
 
