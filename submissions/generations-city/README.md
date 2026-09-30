@@ -36,7 +36,8 @@ The in-app **Demo Guide** walks through this path and updates from real game sta
 - **Property media:** install a billboard, upload an image, add a short owner message, then click the billboard in-world to open its media viewer. Links are intentionally blocked.
 - **District competition:** capture tier-based civic monuments, fight for the prestige-only Capital, or chase the **City Crown** for tallest building.
 - **Patronage:** contribute to another Friend's building and earn increasingly visible recognition on that property.
-- **Demo Tools → Simulate Family growth:** activates deterministic simulated residents through the real plot allocator. The first click opens **Ward II**; the next fills Ward II and opens **Ward III**, demonstrating that districts expand independently as more Friends become active.
+- **Watch the city grow one Friend at a time:** open **Districts & Monuments → City Growth · Wards** and press **+ Friend joins** on any of the nine family districts. The demo creates a new simulated Friend through the real plot allocator and warps directly to the new property; when a district fills its current Ward, the next Ward opens automatically.
+- **Fast-forward district growth:** **District Radio → Demo Tools → Simulate Family growth** activates deterministic simulated residents through that same allocator until the next Family Ward opens. The first click opens **Ward II**; the next fills Ward II and opens **Ward III**.
 
 ## RF rules and costs
 
@@ -65,7 +66,13 @@ The world hierarchy is:
 
 Each of the nine family districts expands independently. Wards are generated procedurally and deterministically as plots fill. The demo starts with roughly 180 buildings and uses level-of-detail rendering plus viewport culling so the city remains navigable as it grows.
 
-The demo-only growth control uses the same `allocatePlot()` + `newBuilding()` path as the underlying model; it does not fake ward geometry by toggling a visual state.
+The live demo exposes this directly in **Districts & Monuments → City Growth · Wards**: judges can add one simulated Friend to any family district and watch the new property appear. The current demo auto-allocates the next valid open plot and warps the camera to it; this demonstrates the real district/ward/plot allocation path rather than toggling a prebuilt visual state.
+
+### Player-chosen property placement
+
+For production onboarding, the intended experience is more personal: once a Friend's family determines its district, the player can **choose the actual available plot they want** from the currently open plots in that family district instead of being forced into the allocator's first free plot. The backend would validate and atomically reserve the selected plot before creating the property so two players cannot claim the same location. Plot choice is spatial/personal preference only — it does not create a scoring multiplier or pay-to-win location advantage.
+
+District capacity still governs expansion. Players choose among valid open plots; when the current open Wards are actually full, the next Ward opens outward and adds another set of selectable properties. The deterministic allocator remains useful as the fallback/default path and for simulations, while the live onboarding experience can expose the same availability model as an interactive property map.
 
 ## Stack / FriendSDK status
 
@@ -83,6 +90,7 @@ A production rollout would primarily replace or add:
 
 - demo identity → wallet connection + Rare Friend ownership lookup;
 - local browser state → authoritative shared backend/database state;
+- demo auto-allocation → validated player-selected plot reservation from currently available properties;
 - SIMULATED RF balance changes → live RF settlement / transaction verification;
 - local event history → indexed on-chain/backend history and reconciliation;
 - browser-local billboard uploads → hosted media storage with moderation/reporting controls;
@@ -124,6 +132,7 @@ Automated coverage includes the 38 RF monument-capture path, Capital progression
 
 - This is a deterministic browser demo using `localStorage`, not a live shared backend. Different browsers do not share city state.
 - All Friends, users, RF balances, rival moves and district-growth residents in the demo are simulated.
+- The current demo auto-selects the next available plot when a simulated Friend joins; interactive player plot selection is described above as the intended production onboarding flow and is not yet implemented in this submitted build.
 - The hackathon monument/Capital model uses simplified cumulative tier counts. A production seasonal system should normalize competition against active seasonal participation rather than raw family supply.
 - Uploaded billboard media is stored locally in the browser. Production media needs server storage, moderation, reporting and content controls.
 - No live token settlement, wallet ownership verification, marketplace, ad rental system or chain indexer is included.
