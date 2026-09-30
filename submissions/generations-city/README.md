@@ -5,7 +5,7 @@
 **Builder / contact:** [420JB](https://github.com/420JB) · Twitter: [@CallOfTheStars](https://twitter.com/CallOfTheStars)  
 **Category:** **Token Activity** (primary) · **Economy Potential** (secondary)  
 **Playable demo:** https://generations-city-production.up.railway.app/  
-**Source:** https://github.com/420JB/generations-city/tree/53c3b01a723cb2cfa19b19dea463001559e60443
+**Source:** https://github.com/420JB/generations-city/tree/f4b53b309410cd1c93d0134e32afac1cf41e999a
 
 *(The project was renamed from Generations City to Rare City; the demo URL, repository and this submission folder keep the original `generations-city` slug.)*
 
@@ -13,11 +13,11 @@
 
 ## What it is
 
-Rare City is a social strategy city built around nine Rare Friends family districts. Each active Friend receives a property; spending RF grows that building, unlocks architecture, earns patron recognition and badges, changes district monument control, and can swing the Capital or the individual City Crown.
+Rare City is a social strategy city built around nine Rare Friends family districts. Each active Friend receives a property; spending RF grows that building, owner spending unlocks architecture, contributions to other Friends can build patron recognition, and progression can change district monument control and swing the Capital or the individual City Crown.
 
-The core idea is simple: **RF spending is not a fee attached to the game — spending RF is the action that physically builds the world.**
+**RF is not merely an entry fee or reward currency. RF spending is the action that physically changes the world.** District Radio and Rally Calls react to the resulting world state.
 
-**Everything in this Vibeathon build is simulated.** All RF is labelled **SIMULATED RF**. No real tokens move, no wallet is connected, and nothing is written on-chain.
+**Everything in this Vibeathon build is simulated, deliberately.** All RF is labelled **SIMULATED RF**. No real tokens move, no wallet is connected, and nothing is written on-chain. The Vibeathon MVP rules ask entries to keep purchases and rewards simulated and clearly labelled, and live contracts and real-money transactions are not required to submit. Rare City uses that MVP model to demonstrate the full downstream effect of RF activity safely, end to end.
 
 ## 30-second judge path
 
@@ -94,7 +94,7 @@ Rare City needs a full-viewport shared-world model with persistent building/patr
 
 ## Production path / live readiness
 
-The Vibeathon build is intentionally structured so taking the core experience live is an **integration and infrastructure step, not a gameplay rewrite**. The economy, allocation, progression, competition, ward-growth and strategy systems are already implemented as deterministic TypeScript game logic, while demo-only identity and persistence sit behind clear boundaries.
+The Vibeathon build is intentionally structured so taking the core experience live is an **integration and infrastructure step, not a gameplay rewrite**. Production replaces the simulated settlement, identity and local-state adapters with verified wallet ownership, RF transaction settlement and authoritative shared state, without redesigning the deterministic game/economy rules (economy, allocation, progression, competition, ward growth and strategy) demonstrated here. None of that live infrastructure exists in this build.
 
 A production rollout would primarily replace or add:
 
@@ -102,6 +102,7 @@ A production rollout would primarily replace or add:
 - local browser state → authoritative shared backend/database state;
 - local, single-browser plot selection → authoritative, atomic server-side plot reservation with conflict handling;
 - SIMULATED RF balance changes → live RF settlement / transaction verification;
+- no RF destination today → a defined token sink/reward policy for verified spends. In this MVP no RF is actually transferred, burned or distributed; the exact burn-versus-reward allocation is a separate production tokenomics decision, not yet made;
 - local event history → indexed on-chain/backend history and reconciliation;
 - browser-local billboard uploads → hosted media storage with moderation/reporting controls;
 - demo rival/growth actions → real user activity and production indexing.
@@ -128,7 +129,7 @@ None for this demo.
 
 ## Checks
 
-Final submitted source commit: `53c3b01a723cb2cfa19b19dea463001559e60443`
+Final submitted source commit: `f4b53b309410cd1c93d0134e32afac1cf41e999a` (README-only change on top of the validated app release `53c3b01a723cb2cfa19b19dea463001559e60443`; the application code is identical, so the results below apply unchanged)
 
 - `npm run lint` — passed
 - `npm run test` — **138/138 passed**
@@ -136,6 +137,7 @@ Final submitted source commit: `53c3b01a723cb2cfa19b19dea463001559e60443`
 - `npm run build` — passed
 - `git diff --check` — clean
 - Railway production deployment of `53c3b01a723cb2cfa19b19dea463001559e60443` — successful, followed by a live desktop + 390px mobile smoke test of the production URL
+- Railway production deployment of docs-only `f4b53b309410cd1c93d0134e32afac1cf41e999a` — successful
 
 Automated coverage includes the 38 RF monument-capture path, Capital progression, strategic Rally Calls, clickable property media and link blocking, mobile build reveal, deterministic district growth through Ward II/III, exact plot placement (chosen-plot semantics, non-mutating preview/cancel/Escape, invalid-plot rejection, next-Ward opening, Reset Demo during placement, keyboard and touch selection, phone layout), reset behavior, family art integrity, scaling/allocation, competition rules and production rendering behavior.
 
