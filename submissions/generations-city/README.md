@@ -31,6 +31,8 @@ Rare City is a social strategy city built around nine Rare Friends family distri
 
 The in-app **Demo Guide** walks through this path and updates from real game state. **Reset Demo** restores the starting scenario.
 
+**Then try the city-growth demo:** in the Demo Guide, choose **Watch the city grow · Choose a plot** (or open **Districts & Monuments → Simulate Real City Growth**) and press **+ Add Friend · choose plot**. The Friend's family fixes the district, available plots highlight on the live city map, and you choose the exact property location. If the current Wards are full, the next Ward is previewed and opens only when you confirm the placement.
+
 ## What to try after the core loop
 
 - **District Radio → Rally Calls:** live strategic recommendations recomputed after every move. Completed objectives disappear and new opportunities surface.
@@ -38,7 +40,7 @@ The in-app **Demo Guide** walks through this path and updates from real game sta
 - **Property media:** install a billboard, upload an image, add a short owner message, then click the billboard in-world to open its media viewer. Links are intentionally blocked.
 - **District competition:** capture tier-based civic monuments, fight for the prestige-only Capital, or chase the **City Crown** for tallest building.
 - **Patronage:** contribute to another Friend's building and earn increasingly visible recognition on that property.
-- **Choose a plot and watch the city grow:** open **Districts & Monuments → Simulate Real City Growth** and press **+ Add Friend · choose plot** on any of the nine family districts (also reachable from the Demo Guide's optional *Watch the city grow*). The camera frames that family district and highlights every available plot. Pick the exact plot you want (click, tap, or focus + Enter), then press **Place Friend here**: a new simulated Demo Friend is created on exactly that plot and the camera warps to its property. **Cancel** or **Escape** leaves the city untouched. When every plot in a district's open Wards is taken (Sparkling and Family at seed), the picker previews the next Ward's plots, and placing the Friend opens that Ward.
+- **Choose a plot and watch the city grow:** the Demo Guide and **Districts & Monuments → Simulate Real City Growth** both open the exact-plot placement flow described above.
 - **Fast-forward district growth:** **District Radio → Demo Tools → Simulate Family growth** activates deterministic simulated residents through the real plot allocator (first free plot) until the next Family Ward opens. The first click opens **Ward II**; the next fills Ward II and opens **Ward III**.
 
 ## RF rules and costs
