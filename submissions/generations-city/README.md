@@ -75,6 +75,21 @@ The demo-only growth control uses the same `allocatePlot()` + `newBuilding()` pa
 
 Generations City needs a full-viewport shared-world model with persistent building/patron/history state, rich property customization, uploaded property media, procedural district growth, and its own city camera/renderer. For the Vibeathon build, those systems run as deterministic local state behind small identity/data boundaries. A production version would replace the demo identity/economy adapters with wallet ownership, backend/shared state, and chain/indexer integration.
 
+## Production path / live readiness
+
+The Vibeathon build is intentionally structured so taking the core experience live is an **integration and infrastructure step, not a gameplay rewrite**. The economy, allocation, progression, competition, ward-growth and strategy systems are already implemented as deterministic TypeScript game logic, while demo-only identity and persistence sit behind clear boundaries.
+
+A production rollout would primarily replace or add:
+
+- demo identity → wallet connection + Rare Friend ownership lookup;
+- local browser state → authoritative shared backend/database state;
+- SIMULATED RF balance changes → live RF settlement / transaction verification;
+- local event history → indexed on-chain/backend history and reconciliation;
+- browser-local billboard uploads → hosted media storage with moderation/reporting controls;
+- demo rival/growth actions → real user activity and production indexing.
+
+That means the existing city renderer, buildings, ward allocator, RF progression, Architect system, patronage, monuments, Capital, Crown, Rally Calls, billboards and judge-facing interaction model can remain largely intact while the adapters underneath them are connected to live services. Security review, transaction design, moderation and production operations would still be required before real funds are enabled.
+
 ## Wallet / network requirements
 
 None for this demo.
