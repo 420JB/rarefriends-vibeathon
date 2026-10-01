@@ -4,7 +4,7 @@
 
 **Builder / contact:** [420JB](https://github.com/420JB) · Twitter: [@CallOfTheStars](https://twitter.com/CallOfTheStars)  
 **Category:** **Token Activity** (primary) · **Economy Potential** (secondary)  
-**Playable demo:** https://generations-city-production.up.railway.app/  
+**Playable demo:** https://rarecity.world/  
 **Source:** https://github.com/420JB/generations-city/tree/f4b53b309410cd1c93d0134e32afac1cf41e999a
 
 *(The project was renamed from Generations City to Rare City; the demo URL, repository and this submission folder keep the original `generations-city` slug.)*
